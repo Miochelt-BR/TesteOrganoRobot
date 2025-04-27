@@ -1,0 +1,19 @@
+# Ignorar a pasta node_modules (Node.js)
+node_modules/
+
+# Ignorar arquivos de log do Node.js
+npm-debug.log
+yarn-error.log
+
+# Ignorar pastas e arquivos do Robot Framework
+*.log
+*.html
+*.xml
+output/
+log/
+report/
+
+# Ignorar arquivos de cache do Robot Framework
+*.pyc
+*.pyo
+__pycache__/
