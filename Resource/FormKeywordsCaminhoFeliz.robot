@@ -1,28 +1,29 @@
 *** Settings ***
-Library    SeleniumLibrary
 
+Library    SeleniumLibrary
 *** Variables ***
 ${URL}           http://localhost:3000/
-${FORMNAME}      ThiagoQA
-${FORMPOSITION}  Testador
+${FORMNAME}      THIAGOQA
+${FORMPOSITION}  TESTADOR
 ${FORMIMAGE}     https://picsum.photos/200/300
 ${LIST}          //div[@class='lista-suspensa']//select[1]
 ${OPTIONS}       //option[contains(.,'Programação')]
 ${BUTTON}        id=form-botao
-${COLLABORATOR}    class:colaborador
+${COLLABORATOR}  class:colaborador
 
-*** Test Cases ***
-Abrir Website
-    Open Browser    ${URL}   chrome
+*** Keywords ***
+Dado que o site está aberto
+    Open Browser    ${URL}    chrome
 
-Preencher Formulário
-    Open Browser    ${URL}   chrome
+Quando preencho o formulário
     Input Text    id=form-nome    ${FORMNAME}
     Input Text    id=form-cargo    ${FORMPOSITION}
     Input Text    id=form-imagem    ${FORMIMAGE}
     Click Element    ${LIST}
-    Sleep   10S
+    Sleep   2s
     Click Element    ${OPTIONS}
     Click Element    ${BUTTON}
-    Sleep   10s
+
+Então o colaborador deve ser criado
+    Sleep   2s
     Element Should Be Visible    ${COLLABORATOR}
